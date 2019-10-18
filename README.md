@@ -2,8 +2,6 @@
 
 今回は Elasticsearch + Sudachi でユーザー辞書を使う Dockerfile を作ったので作り方を共有します。
 
-## Sudachi とは
-
 ## 今回のハンズオンの最終構成
 
 最終的に下記のような構成を目指します。
