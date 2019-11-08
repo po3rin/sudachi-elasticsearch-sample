@@ -1,5 +1,5 @@
 {
-    "systemDict": "system_small.dic",
+    "systemDict": "system_full.dic",
     "userDict": [
         "custom.dic"
     ],
