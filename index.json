@@ -1,0 +1,60 @@
+{
+  "settings": {
+    "analysis": {
+      "analyzer": {
+        "sudachi_search_analyzer_c": {
+          "type": "custom",
+          "tokenizer": "sudachi_tokenizer_c",
+          "discard_punctuation": true,
+          "filter": [
+            "synonym_filter",
+            "sudachi_pos_filter",
+            "sudachi_baseform",
+            "sudachi_normalizedform"
+            ]
+        }
+      },
+      "tokenizer": {
+        "sudachi_tokenizer_c": {
+          "type": "sudachi_tokenizer",
+          "split_mode": "C",
+          "resources_path": "/app/config/sudachi/",
+          "discard_punctuation": true
+        }
+      },
+      "filter": {
+        "synonym_filter" : {
+            "type" : "synonym_graph",
+            "synonyms_path": "/app/config/sudachi/sudachi_synonyms.txt"
+        },
+        "sudachi_pos_filter": {
+            "type": "sudachi_part_of_speech",
+            "stoptags": [
+              "代名詞",
+              "形状詞-タリ",
+              "形状詞-助動詞語幹",
+              "連体詞",
+              "接続詞",
+              "感動詞",
+              "助動詞",
+              "助詞",
+              "補助記号",
+              "空白"
+            ]
+          }
+      }
+    }
+  },
+  "mappings": {
+    "dynamic": "strict",
+    "properties": {
+      "id": {
+        "type": "long",
+        "index": true
+      },
+      "body": {
+        "type": "text"
+      }
+    }
+  }
+}

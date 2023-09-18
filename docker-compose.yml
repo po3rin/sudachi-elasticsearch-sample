@@ -7,15 +7,11 @@ services:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
       - node.name=es01
       - discovery.type=single-node
+    volumes:
+      - ./:/usr/src/app
     ports:
       - '9200:9200'
       - '9300:9300'
-
-  kibana:
-    image: docker.elastic.co/kibana/kibana:7.4.0
-    links:
-      - elasticsearch
-    environment:
-      - ELASTICSEARCH_URL=http://elasticsearch:9200
-    ports:
-      - 5601:5601
+    entrypoint:
+      - bash
+      - /usr/src/app/docker-entrypoint.sh
